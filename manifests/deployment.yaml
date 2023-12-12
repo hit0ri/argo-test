@@ -10,8 +10,8 @@ spec:
       app.kubernetes.io/name: nginx
   template:
     metadata:
-      # Ref: https://github.com/argoproj/argo-cd/issues/3150
-      annotations: null
+      annotations:
+        foo: nginx
       labels:
         app.kubernetes.io/name: nginx
     spec:

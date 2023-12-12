@@ -2,27 +2,59 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: pause
-  name: pause
+    app.kubernetes.io/name: nginx
+  name: nginx
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: pause
+      app.kubernetes.io/name: nginx
   template:
     metadata:
+      # Ref: https://github.com/argoproj/argo-cd/issues/3150
       annotations: null
       labels:
-        app.kubernetes.io/name: pause
+        app.kubernetes.io/name: nginx
     spec:
       containers:
-        - name: pause
-          image: registry.k8s.io/pause:3.7
+        - name: nginx
+          image: 'public.ecr.aws/docker/library/nginx:1.25.3-alpine'
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          startupProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
           resources:
             limits:
-              cpu: '0.2'
+              cpu: 200m
               ephemeral-storage: 64Mi
               memory: 64Mi
             requests:
-              cpu: '0.1'
+              cpu: 100m
               ephemeral-storage: 64Mi
               memory: 32Mi

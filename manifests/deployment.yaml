@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: nginx
-  name: nginx
+    app.kubernetes.io/name: pause
+  name: pause
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: nginx
+      app.kubernetes.io/name: pause
   template:
     metadata:
       annotations: null
       labels:
-        app.kubernetes.io/name: nginx
+        app.kubernetes.io/name: pause
     spec:
       containers:
-        - name: nginx
-          image: 'public.ecr.aws/bitnami/nginx:1.25.3'
+        - name: pause
+          image: registry.k8s.io/pause:3.7
           resources:
             limits:
-              cpu: '1'
+              cpu: '0.2'
               ephemeral-storage: 64Mi
-              memory: 256Mi
+              memory: 64Mi
             requests:
               cpu: '0.1'
               ephemeral-storage: 64Mi
-              memory: 64Mi
+              memory: 32Mi

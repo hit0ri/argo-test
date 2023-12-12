@@ -17,6 +17,8 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        foo: bar
       labels:
         app.kubernetes.io/name: nginx
     spec:

@@ -1,0 +1,9 @@
+---
+apiVersion: v2
+name: &name postgresql
+type: application
+version: &version 13.2.x
+dependencies:
+  - name: *name
+    version: *version
+    repository: https://charts.bitnami.com/bitnami

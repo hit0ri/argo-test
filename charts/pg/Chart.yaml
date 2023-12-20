@@ -2,7 +2,7 @@
 apiVersion: v2
 name: &name postgresql
 type: application
-version: &version 13.2.x
+version: &version 13.2.24
 dependencies:
   - name: *name
     version: *version

@@ -1,3 +1,4 @@
 postgresql:
   auth:
     postgresPassword: hunter2
+    database: demo

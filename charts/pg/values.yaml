@@ -2,5 +2,6 @@ postgresql:
   auth:
     postgresPassword: hunter2
     database: demo
-  persistence:
-    size: 10Gi
+  primary:
+    persistence:
+      size: 10Gi

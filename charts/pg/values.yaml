@@ -5,4 +5,4 @@ postgresql:
   primary:
     persistence:
       storageClass: local-path
-      size: 11Gi
+      size: 4Gi

@@ -4,5 +4,4 @@ postgresql:
     database: demo
   primary:
     persistence:
-      storageClass: local-path
       size: 20Gi

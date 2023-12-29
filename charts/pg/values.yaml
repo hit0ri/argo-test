@@ -1,4 +1,6 @@
 postgresql:
+  image:
+    tag: 15.1
   auth:
     postgresPassword: hunter2
     database: demo
